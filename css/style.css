@@ -10,5 +10,7 @@
 
 /* 6. a different background color for elements such as boxes and tables */
 
-
+* {
+  background-color: red;
+}
 
