@@ -12,10 +12,27 @@ Pat's Salmon Cookies, soon with franchises all over town, needs to calculate the
 */
 
 // create a function to return a random in between the provided min and max
-var randBetween = function(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
+function randBetween(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 // crete object literals for each of the stores
+
+// store #1 - 1st and Pike 
+
+
+
+// store #2 - SeaTac Airport
+
+
+// store #3 - Seattle Center
+
+
+// store #4 - Capitol Hill
+
+
+// store #5 - Alki
+
+
 
 // 1. store the min/max hourly customers, and the average cookies per customer in the object properties
 
