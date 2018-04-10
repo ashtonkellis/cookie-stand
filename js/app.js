@@ -347,12 +347,6 @@ var alki = {
   }
 }; // end of store #5 - alki object
 
-
-
-// Location        | Min / Cust | Max / Cust | Avg Cookie / Sale
-// ----------------|------------|------------|-------------------
-// Alki            |      2     |     16     |        4.6
-
 firstAndPike.renderAllEstimates();
 seaTac.renderAllEstimates();
 seattleCenter.renderAllEstimates();

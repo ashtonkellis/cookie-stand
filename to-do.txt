@@ -1,0 +1,8 @@
+0. fix michelle's comments
+
+1. add a css reset
+
+2. fix the columns on the bottom of index.html 
+  - probably need to make them inline-block elements so i can adjust the vertical height
+
+3. use for loop shorthand for all loops
