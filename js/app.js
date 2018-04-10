@@ -18,7 +18,7 @@ function addTH(elementText) {
   return thEL;
 }
 
-function addTD() {
+function addTD(elementText) {
   var tdEL = document.createElement('td');
   tdEL.textContent = elementText;
   return tdEL;
@@ -73,10 +73,29 @@ Store.prototype.estimateAll = function() {
   this.estimateTotalCookies();
 };
 
+Store.prototype.renderTableData = function () {
+  // create a table row
+  var trEL = document.createElement('tr');
+
+  // create first td element (store name) and create/append to tr
+  trEL.appendChild(addTD(this.storeName));
+
+  // loop through cookiesEachHour array and create/append a td to tr
+  for (var i in this.cookiesEachHour) {
+    var sales = this.cookiesEachHour[i];
+    trEL.appendChild(addTD(sales));
+  }
+
+  // create last td element (totalCookies) and create/append a td to tr
+  trEL.appendChild(addTD(this.totalCookies));
+  
+  // append table row to table
+  salesTableBody.appendChild(trEL);
+};
+
 Store.renderTableHeader = function () {
   // create table row
   var trEL = document.createElement('tr');
-  var thEL;
 
   // create first th element (blank cell) and append to tr element
   trEL.appendChild(addTH(''));
@@ -92,6 +111,12 @@ Store.renderTableHeader = function () {
 
   // append table row to table
   salesTableHead.appendChild(trEL);
+};
+
+Store.renderTableData = function () {
+  for (var i in stores) {
+    stores[i].renderTableData();
+  }
 };
 
 var firstAndPike = new Store('1st and Pike', 'firstAndPike', 23, 65, 6.3);
