@@ -1,17 +1,10 @@
-/* 1. null */
-
-/* 2. use a custom google font for highlights */
-
-/* 3. use a specified standard serif web fonr tof text (Georgia, times, etc) */
-
-/* 4. specified different font colors for all three font usages  */
-
-/* 5. a backgroudn color for the default page background */
-
-/* 6. a different background color for elements such as boxes and tables */
-
 * {
   box-sizing: border-box;
+  padding: 5px;
+}
+
+header {
+  font-family: 'Do Hyeon', sans-serif;
 }
 
 body {
@@ -47,12 +40,22 @@ section {
   float: left;
   background-color: lightblue;
   margin: 5px;
-  
+  font-family: 'Cormorant Garamond', serif;
 }
 
 h3,
 section h4 {
   text-align: center;
+}
+
+h3 {
+  text-decoration: underline;
+  font-weight: 700;
+  color: salmon;
+}
+
+section {
+  border: 1px black solid;
 }
 
 footer ul {
@@ -78,7 +81,7 @@ footer li {
 .sales ul {
   width: 20%;
   background-color: salmon;
-  float: left;
+  float: right;
   border: 1px black solid;
   font-weight: 700;
   text-align: center;
