@@ -1,6 +1,6 @@
 'use strict';
 
-var storeHours = ['6am','7am','8am','9am','10am','11am','12am','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm',];
+var storeHours = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm','8:00pm',];
 
 var stores = [];
 
@@ -73,7 +73,7 @@ Store.prototype.estimateAll = function() {
   this.estimateTotalCookies();
 };
 
-Store.prototype.renderTableData = function () {
+Store.prototype.renderSalesTableData = function () {
   // create a table row
   var trEL = document.createElement('tr');
 
@@ -93,7 +93,7 @@ Store.prototype.renderTableData = function () {
   salesTableBody.appendChild(trEL);
 };
 
-Store.renderTableHeader = function () {
+Store.renderSalesTableHeader = function () {
   // create table row
   var trEL = document.createElement('tr');
 
@@ -112,9 +112,10 @@ Store.renderTableHeader = function () {
   salesTableHead.appendChild(trEL);
 };
 
-Store.renderTableData = function () {
+Store.renderSalesTable = function () {
+  this.renderSalesTableHeader();
   for (var i in stores) {
-    stores[i].renderTableData();
+    stores[i].renderSalesTableData();
   }
 };
 
