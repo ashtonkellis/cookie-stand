@@ -41,7 +41,7 @@ var storeHours = [
 // store #1 - 1st and Pike.
 var firstAndPike = {
   // 1. store the min/max hourly customers, and the average cookies per customer in the object properties
-  storeId: firstAndPike,
+  storeId: 'firstAndPike',
   hourlyCustomersMin: 23,
   hourlyCustomersMax: 65,
   averageCookiesPerCustomer: 6.3,
@@ -89,22 +89,25 @@ var firstAndPike = {
 
   // 5. display the values of each array as unordered lists in the browswer
   renderHourlyEstimates: function () {
-    this.estimateAll();
-    var ulEL = document.getElementById('firstAndPike');
+    var ulEL = document.getElementById(this.storeId);
     for (var i = 0; i < this.cookiesEachHour.length; i++) {
       var liEL = document.createElement('li');
       liEL.textContent = storeHours[i] + ': ' + this.cookiesEachHour[i];
       ulEL.appendChild(liEL);
     }
-
   },
 
   // 6. calculating the sum of these hourly totals; your ourput for each location shoud look like this:
   renderTotalEstimate: function () {
+    var ulEL = document.getElementById(this.storeId);
+    var liEL = document.createElement('li');
+    liEL.textContent = 'Total: ' + this.totalCookies;
+    ulEL.appendChild(liEL);
 
   },
 
   renderAllEstimates: function () {
+    this.estimateAll();
     this.renderHourlyEstimates();
     this.renderTotalEstimate();
   }
