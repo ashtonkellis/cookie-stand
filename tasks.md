@@ -1,7 +1,5 @@
 # technical requirements for tuesday's lab
 ## app.js
-1. use for loop shorthand for all loops
-2. create new instances of that objects by calling the function with new keyword
 3. function to render table header row
 4. function to render table data rows
 5. function to render table footer row
