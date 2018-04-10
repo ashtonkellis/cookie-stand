@@ -12,13 +12,13 @@ function randIntBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 // crete object literals for each of the stores
-var stores = [
-  firstAndPike,
-  seaTac,
-  seattleCenter,
-  capitolHill,
-  alki
-];
+// var stores = [
+//   firstAndPike,
+//   seaTac,
+//   seattleCenter,
+//   capitolHill,
+//   alki
+// ];
 
 var storeHours = [
   '6am',
@@ -41,6 +41,7 @@ var storeHours = [
 // store #1 - 1st and Pike.
 var firstAndPike = {
   // 1. store the min/max hourly customers, and the average cookies per customer in the object properties
+  storeId: firstAndPike,
   hourlyCustomersMin: 23,
   hourlyCustomersMax: 65,
   averageCookiesPerCustomer: 6.3,
@@ -87,13 +88,30 @@ var firstAndPike = {
   },
 
   // 5. display the values of each array as unordered lists in the browswer
-  renderEstimates: function () {
-    
-  }
+  renderHourlyEstimates: function () {
+    this.estimateAll();
+    var ulEL = document.getElementById('firstAndPike');
+    for (var i = 0; i < this.cookiesEachHour.length; i++) {
+      var liEL = document.createElement('li');
+      liEL.textContent = storeHours[i] + ': ' + this.cookiesEachHour[i];
+      ulEL.appendChild(liEL);
+    }
+
+  },
 
   // 6. calculating the sum of these hourly totals; your ourput for each location shoud look like this:
+  renderTotalEstimate: function () {
+
+  },
+
+  renderAllEstimates: function () {
+    this.renderHourlyEstimates();
+    this.renderTotalEstimate();
+  }
+
 };
 
+firstAndPike.renderAllEstimates();
 
 // store #2 - SeaTac Airport
 
