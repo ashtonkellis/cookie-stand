@@ -88,7 +88,7 @@ Store.prototype.renderTableData = function () {
 
   // create last td element (totalCookies) and create/append a td to tr
   trEL.appendChild(addTD(this.totalCookies));
-  
+
   // append table row to table
   salesTableBody.appendChild(trEL);
 };
@@ -101,9 +101,8 @@ Store.renderTableHeader = function () {
   trEL.appendChild(addTH(''));
 
   // loop through all store locations and append store names to tr
-  for (var i in stores) {
-    var storeName = stores[i].storeName;
-    trEL.appendChild(addTH(storeName));
+  for (var i in storeHours) {
+    trEL.appendChild(addTH(storeHours[i]));
   }
 
   // create last th element (total's column) and append to tr
