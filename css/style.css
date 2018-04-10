@@ -10,7 +10,42 @@
 
 /* 6. a different background color for elements such as boxes and tables */
 
-* {
-  background-color: red;
+body {
+  background-color: blue;
 }
 
+header,
+footer { 
+  background-color: salmon;
+  color: white;
+  text-align: center;
+}
+
+img {
+  width: 100%;
+}
+
+.wrapper {
+  background-color: lightblue;
+  width: 80%;
+  margin: auto;
+
+}
+
+section {
+  width: 31%;
+  float: left;
+  background-color: lightblue;
+  margin: 5px;
+}
+
+footer ul {
+  list-style-type: none;
+  
+}
+
+
+footer li {
+  display: inline-block;
+  width: 
+}
