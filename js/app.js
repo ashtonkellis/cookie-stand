@@ -1,24 +1,98 @@
 'use strict';
-
-alert('Working!');
 /*
-
 Pat's Salmon Cookies, soon with franchises all over town, needs to calculate the number of cookies each location must make every day so that it can manage its supplies inventory and baking schedule. The number of cookies to make depends on the hours of operation (6:00 AM to 8:00 PM for all locations) and a few factors unique to each location:
 
 - The minimum number of customers per hour.
 - The maximum number of customers per hour.
 - The average number of cookies purchased per customer.
-
 */
 
-// create a function to return a random in between the provided min and max
-function randBetween(min, max) {
+// create a function to return a random int between the provided min and max
+function randIntBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 // crete object literals for each of the stores
+var stores = [
+  firstAndPike,
+  seaTac,
+  seattleCenter,
+  capitolHill,
+  alki
+];
 
-// store #1 - 1st and Pike 
+var storeHours = [
+  '6am',
+  '7am',
+  '8am',
+  '9am',
+  '10am',
+  '11am',
+  '12am',
+  '1pm',
+  '2pm',
+  '3pm',
+  '4pm',
+  '5pm',
+  '6pm',
+  '7pm',
+  '8pm',
+];
 
+// store #1 - 1st and Pike.
+var firstAndPike = {
+  // 1. store the min/max hourly customers, and the average cookies per customer in the object properties
+  hourlyCustomersMin: 23,
+  hourlyCustomersMax: 65,
+  averageCookiesPerCustomer: 6.3,
+  customersEachHour: [],
+  cookiesEachHour: [],
+  totalCookies: 0,
+
+  // 2. use a method of that object to generate a random number of customers per hour
+  randCustomerQuantity: function () {
+    return randIntBetween(this.hourlyCustomersMin, this.hourlyCustomersMax);
+  },
+
+  // 3. calculate and store the simulated amounts of cookies purchase and the random number of customers generated
+  estimateCustomers: function () {
+    for (var i = 0; i < storeHours.length; i++) {
+      var customers = this.randCustomerQuantity();
+      this.customersEachHour.push(customers);
+    }
+    return this.customersEachHour;
+  },
+
+  // 4. store the results for each location in a separate array, perhaps as a property of the object representing that location
+  estimateCookies: function () {
+    for (var i = 0; i < storeHours.length; i++) {
+      var cookies = this.customersEachHour[i] * this.averageCookiesPerCustomer;
+      cookies = Math.round(cookies);
+      this.cookiesEachHour.push(cookies);
+    }
+    return this.cookiesEachHour;
+  },
+
+  estimateTotalCookies: function () {
+    this.totalCookies = 0;
+    for (var i = 0; i < this.cookiesEachHour.length; i++) {
+      this.totalCookies += this.cookiesEachHour[i];
+    }
+    return this.totalCookies;
+  },
+
+  estimateAll: function () {
+    this.estimateCustomers();
+    this.estimateCookies();
+    this.estimateTotalCookies();
+  },
+
+  // 5. display the values of each array as unordered lists in the browswer
+  renderEstimates: function () {
+    
+  }
+
+  // 6. calculating the sum of these hourly totals; your ourput for each location shoud look like this:
+};
 
 
 // store #2 - SeaTac Airport
@@ -44,9 +118,8 @@ function randBetween(min, max) {
 
 // 5. display the values of each array as unordered lists in the browswer
 
-/*
 // 6. calculating the sum of these hourly totals; your ourput for each location shoud look like this:
-
+/*
     1st and Pike
     - 6am: 16 cookies
     - 7am: 20 cookies
@@ -77,5 +150,4 @@ Alki            |      2     |     16     |        4.6
 
 */
 
-// 
-
+//
