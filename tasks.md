@@ -1,8 +1,7 @@
 # technical requirements for tuesday's lab
 ## app.js
-
-0. use for loop shorthand for all loops
 1. replace object literals with constructor functions
+1. use for loop shorthand for all loops
 2. create new instances of that objects by calling the function with new keyword
 3. function to render table header row
 4. function to render table data rows
@@ -20,23 +19,18 @@
 | Alki        |       |        |        |        |        |         |         |         |        |        |        |        |        |        |
 | Totals                 |       |        |        |        |        |         |         |         |        |        |        |        |        |        |
 
-
 ## index.html
 1. add information about each store
-
 
 ## style.css
 1. apply a color pallet that looks nice from one of the websites linked today in class
 2. fix layout issues with the stores at the bottom of the page
-
-
 
 # prep for tomorrow
 1. journal
 2. readings
 3. push lab assignment and submit
 4. take quiz
-
 
 # stretch goals for tuesday's lab
 ## sales.html
