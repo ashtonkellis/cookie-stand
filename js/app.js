@@ -72,7 +72,7 @@ var firstAndPike = {
     this.renderHourlyEstimates();
     this.renderTotalEstimate();
   }
-};
+}; // end of store #1 - 1st and pike object
 
 // store #2 - SeaTac Airport
 var seaTac = {
@@ -140,7 +140,7 @@ var seaTac = {
     this.renderHourlyEstimates();
     this.renderTotalEstimate();
   }
-};
+}; // end of store #2 - seatac airport object
 
 // store #3 - Seattle Center
 var seattleCenter = {
@@ -208,20 +208,88 @@ var seattleCenter = {
     this.renderHourlyEstimates();
     this.renderTotalEstimate();
   },
-};
+}; // end of store #3 - Seattle Center object
 
 
 // store #4 - Capitol Hill
+var capitolHill = {
+  storeId: 'capitolHill',
+  hourlyCustomersMin: 20,
+  hourlyCustomersMax: 38,
+  averageCookiesPerCustomer: 2.3,
+  customersEachHour: [],
+  cookiesEachHour: [],
+  totalCookies: 0,
 
+  randCustomerQuantity: function () {
+    return randIntBetween(this.hourlyCustomersMin, this.hourlyCustomersMax);
+  },
+
+  estimateCustomers: function () {
+    for (var i = 0; i < storeHours.length; i++) {
+      var customers = this.randCustomerQuantity();
+      this.customersEachHour.push(customers);
+    }
+    return this.customersEachHour;
+  },
+
+  estimateCookies: function () {
+    for (var i = 0; i < storeHours.length; i++) {
+      var cookies = this.customersEachHour[i] * this.averageCookiesPerCustomer;
+      cookies = Math.round(cookies);
+      this.cookiesEachHour.push(cookies);
+    }
+    return this.cookiesEachHour;
+  },
+  
+  estimateTotalCookies: function () {
+    this.totalCookies = 0;
+    for (var i = 0; i < this.cookiesEachHour.length; i++) {
+      this.totalCookies += this.cookiesEachHour[i];
+    }
+    return this.totalCookies;
+  },
+
+  estimateAll: function () {
+    this.estimateCustomers();
+    this.estimateCookies();
+    this.estimateTotalCookies();
+  },
+
+  renderHourlyEstimates: function () {
+    var ulEL = document.getElementById(this.storeId);
+    for (var i = 0; i < this.cookiesEachHour.length; i++) {
+      var liEL = document.createElement('li');
+      liEL.textContent = storeHours[i] + ': ' + this.cookiesEachHour[i];
+      ulEL.appendChild(liEL);
+    }
+  },
+
+  renderTotalEstimate: function () {
+    var ulEL = document.getElementById(this.storeId);
+    var liEL = document.createElement('li');
+    liEL.textContent = 'Total: ' + this.totalCookies;
+    ulEL.appendChild(liEL);
+  },
+
+  renderAllEstimates: function () {
+    this.estimateAll();
+    this.renderHourlyEstimates();
+    this.renderTotalEstimate();
+  }
+}; // end of store 4 - capitol hill object
 
 // store #5 - Alki
 
+
+
+
 // Location        | Min / Cust | Max / Cust | Avg Cookie / Sale
 // ----------------|------------|------------|-------------------
-// Seattle Center  |      11    |     38     |        3.7
-// Capitol Hill    |      20    |     38     |        2.3
 // Alki            |      2     |     16     |        4.6
 
 firstAndPike.renderAllEstimates();
 seaTac.renderAllEstimates();
 seattleCenter.renderAllEstimates();
+capitolHill.renderAllEstimates();
+
