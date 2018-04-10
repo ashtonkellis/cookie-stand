@@ -10,8 +10,14 @@
 
 /* 6. a different background color for elements such as boxes and tables */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: blue;
+  background-color: lightblue;
+  max-width: 1024px;
+  margin: auto;
 }
 
 header,
@@ -19,10 +25,14 @@ footer {
   background-color: salmon;
   color: white;
   text-align: center;
+  width: 100%;
 }
 
 img {
   width: 100%;
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
 }
 
 .wrapper {
@@ -37,15 +47,51 @@ section {
   float: left;
   background-color: lightblue;
   margin: 5px;
+  
+}
+
+h3,
+section h4 {
+  text-align: center;
 }
 
 footer ul {
   list-style-type: none;
-  
+  width: 100%;
+  border: 1px black solid;
 }
 
 
 footer li {
   display: inline-block;
-  width: 
+  width: 15%;
+  border: 2px black solid;
+  float: left;
 }
+
+/* styling for sales page */
+.sales h1 {
+  text-align: center;
+
+}
+
+.sales ul {
+  width: 20%;
+  background-color: salmon;
+  float: left;
+  border: 1px black solid;
+  font-weight: 700;
+  text-align: center;
+  vertical-align: bottom;
+}
+
+.sales li {
+  font-weight: 400;
+  list-style-type: none;
+}
+
+/* float clearfix */
+.clearfix:after {
+	content: "";
+	display: table;
+clear: both;
