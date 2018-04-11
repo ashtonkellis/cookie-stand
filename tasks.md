@@ -1,12 +1,3 @@
-## index.html
-1. add information about each store
-
-## style.css
-1. apply a color pallet that looks nice from one of the websites linked today in class
-2. fix layout issues with the stores at the bottom of the page
-3. link to css reset from both pages
-4. make the table look pretty for pat
-
 # prep for tomorrow
 1. journal
 2. readings
