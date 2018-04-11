@@ -9,7 +9,6 @@
 
 * {
   box-sizing: border-box;
-  padding: 10px;
 }
 
 header {
@@ -18,6 +17,7 @@ header {
 
 h1 {
   font-size: 40px;
+  text-align: center;
 }
 
 h2 {
@@ -42,7 +42,7 @@ img {
   width: 100%;
   max-width: 400px;
   margin: auto;
-  text-align: center;
+  display: block;
 }
 
 .wrapper {
@@ -108,14 +108,7 @@ footer li {
 
 /* ========== FORMATTING FOR SALES PAGE ========== */
 
-/* COLOR PALLET COLORS
-
-#EDFAFD - glass (offwhite)
-#AED9DA - chill (light greenish)
-#3DDAD7 - california coral (aqua marine)
-#2A93D5 - bondi blue (blue)
-#135589 - marina (dark blue)
-*/
+/* FORMATTING FOR TABLES */
 table, th, td {
   border: 1px solid black;
   padding: 5px;
@@ -151,9 +144,68 @@ tr td:first-child {
   color: #EDFAFD
 }
 
-/* float clearfix */
-.clearfix:after {
+/* FORMATTING FOR INPUT FORM */
+
+form {
+  width: 550px;
+  border:4px solid #135589;
+  padding: 10px;
+  margin: 10px 0 30px 30px;
+  background-color: #AED9DA;
+  color: #135589;
+}
+
+form legend {
+  margin: auto;
+  font-size: 1.25em;
+}
+
+.fieldset-wrapper {
+  margin: auto;
+  border: 1px solid #135589;
+  padding: 10px 0;
+}
+
+fieldset {
+  margin-bottom: 10px;
+}
+
+.fieldset-wrapper label,
+.fieldset-wrapper input {
+  display: inline-block;
+  width: 45%;
+}
+
+.fieldset-wrapper label {
+  text-align: right;
+}
+
+.fieldset-wrapper input {
+  text-align: center;
+  background-color: #EDFAFD;
+}
+
+.form-buttons{
+  display: inline-block;
+  width: 200px;
+  height: 30px;
+  margin-left: 250px;
+  background-color: #EDFAFD;
+
+}
+
+form input[type='submit']{
+  color: #135589;
+}
+
+form input[type='reset'] {
+  color: red;
+}
+
+
+/* ========== CLEARFIX ========== */
+/* .clerafix:after {
 	content: "";
 	display: table;
-  clear: both;
-}
+	clear: both;
+} */

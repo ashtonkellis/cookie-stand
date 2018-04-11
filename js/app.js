@@ -1,6 +1,6 @@
 'use strict';
 
-var storeHours = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm','8:00pm',];
+var storeHours = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 
 var stores = [];
 
@@ -120,6 +120,22 @@ Store.renderSalesTable = function () {
     stores[i].renderSalesTableData();
   }
 };
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+  var newStore = new Store(
+    e.target.storeName.value,
+    e.target.storeId.value,
+    e.target.minCustomers.value,
+    e.target.maxCustomers.value,
+    e.target.avgCookies.value
+  );
+  newStore.renderSalesTableData();
+  e.target.reset();
+}
+
+var newStoreForm = document.getElementById('new-store-form');
+newStoreForm.addEventListener('submit', handleFormSubmit);
 
 new Store('1st and Pike', 'firstAndPike', 23, 65, 6.3);
 new Store('SeaTac Airport', 'seaTac', 3, 24, 1.2);
