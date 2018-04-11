@@ -10,22 +10,24 @@
     <form id="new-store-form">
       <fieldset>
         <legend>Store Information</legend>
+        <!-- store name -->
         <label for="store-name-input">Store Name</label>
-        <input type="text" id="store-name-input" name="storeName">
-
+        <input type="text" id="store-name-input" name="storeName" required />
+        <!-- store id -->
         <label for="store-id-input">Store ID</label>
-        <input type="text" id="store-id-input" name="storeId">
+        <input type="text" id="store-id-input" name="storeId" required />
       </fieldset>
       <fieldset>
         <legend>Estimate Inputs</legend>
+        <!-- minimum customers per hour -->
         <label for="min-customers-input">Minimum Customers Per Hour</label>
-        <input type="number" id="min-customers-input" name="minCustomers">
-        
+        <input type="number" id="min-customers-input" name="minCustomers" min="0" placeholder="5" required />
+        <!-- maximum customers per hour -->
         <label for="max-customers-input">Maximum Customers Per Hour</label>
-        <input type="number" id="max-customers-input" name="maxCustomers">
-
+        <input type="number" id="max-customers-input" name="maxCustomers" min="0" placeholder = "25" required />
+        <!-- average cookies per customer -->
         <label for="avg-cookies-input">Average Cookies Per Customer</label>
-        <input type="number" id="avg-cookies-input" name="avgCookies">
+        <input type="number" id="avg-cookies-input" name="avgCookies" min="0" placeholder="4.5" step= "0.1" required />
       </fieldset>
       <input type="submit">
     </form>

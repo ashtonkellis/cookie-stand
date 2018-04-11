@@ -2,11 +2,9 @@
 4. git enable tab complete for in terminal
 
 # wednesday's lab
-## index.html
-
-## app.js
-1. add event listener for submit button
-2. lookup error correction on input, and implement it
+## style.css
+1. add styling (redness) to invalid inputs
+2. center fish
 
 # prep for tomorrow
 5. comment on someone else's reading assignment
