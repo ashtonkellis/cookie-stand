@@ -4,10 +4,9 @@
 # wednesday's lab
 ## index.html
 
-## sales.html
-1. add form, including a fieldset
 ## app.js
-1. lookup error correction on input, and implement it
+1. add event listener for submit button
+2. lookup error correction on input, and implement it
 
 # prep for tomorrow
 5. comment on someone else's reading assignment

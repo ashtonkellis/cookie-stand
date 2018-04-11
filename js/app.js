@@ -121,6 +121,21 @@ Store.renderSalesTable = function () {
   }
 };
 
+function handleFormSubmit(e) {
+  e.preventDefault();
+  var newStore = new Store(
+    e.target.storeName.value,
+    e.target.storeId.value,
+    e.target.minCustomers.value,
+    e.target.maxCustomers.value,
+    e.target.avgCookies.value
+  );
+  newStore.renderSalesTableData();
+}
+
+var newStoreForm = document.getElementById('new-store-form');
+newStoreForm.addEventListener('submit', handleFormSubmit);
+
 new Store('1st and Pike', 'firstAndPike', 23, 65, 6.3);
 new Store('SeaTac Airport', 'seaTac', 3, 24, 1.2);
 new Store('Seattle Center', 'seattleCenter', 11, 38, 3.7);
