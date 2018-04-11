@@ -182,11 +182,20 @@ fieldset {
   text-align: center;
 }
 
-form input[type='submit']{
-  color: blue;
+.form-buttons{
   display: inline-block;
   width: 200px;
-  margin-left: 280px;
+  height: 30px;
+  margin-left: 250px;
+
+}
+
+form input[type='submit']{
+  color: blue;
+}
+
+form input[type='reset'] {
+  color: red;
 }
 
 
