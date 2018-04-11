@@ -1,9 +1,5 @@
-# finish yesterday's tasks
-2. google docs disable smart quotes
-3. mac disable smart quotes (settings.keyboard.text)
+# housekeeping
 4. git enable tab complete for in terminal
-5. comment on someone else's reading assignment
-6. remove 8 pm
 
 # wednesday's lab
 ## index.html
@@ -14,6 +10,7 @@
 1. lookup error correction on input, and implement it
 
 # prep for tomorrow
+5. comment on someone else's reading assignment
 1. quiz
 2. journal
 3. reading
