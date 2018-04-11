@@ -1,8 +1,17 @@
 # wednesday's lab
+
+## index.html
+1. add clear form button
+## sales.html
+
+## app.js
+1. add clear form button
+1. add event listener to clear form button to actually clear the form
+1. update submit event listener to clear form
+
 ## style.css
-0. STYLE FORM
-1. add styling (redness) to invalid inputs
-2. center fish
+
+
 
 # prep for tomorrow
 5. comment on someone else's reading assignment
