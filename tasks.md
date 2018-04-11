@@ -1,8 +1,6 @@
-# housekeeping
-4. git enable tab complete for in terminal
-
 # wednesday's lab
 ## style.css
+0. STYLE FORM
 1. add styling (redness) to invalid inputs
 2. center fish
 
@@ -34,6 +32,11 @@
 0. have two fishes mirrored and bookending the title
 1. animate that fish!
 
+## sales.html
+1. add regex to store id to not allow leading numerals, nor spaces
+
+# housekeeping
+4. git enable tab complete for in terminal
 
 
 
