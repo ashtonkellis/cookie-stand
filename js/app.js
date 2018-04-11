@@ -131,6 +131,7 @@ function handleFormSubmit(e) {
     e.target.avgCookies.value
   );
   newStore.renderSalesTableData();
+  e.target.reset();
 }
 
 var newStoreForm = document.getElementById('new-store-form');

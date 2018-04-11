@@ -148,9 +148,11 @@ tr td:first-child {
 
 form {
   width: 550px;
-  border: 1px solid black;
+  border:4px solid #135589;
   padding: 10px;
   margin: 10px 0 30px 30px;
+  background-color: #AED9DA;
+  color: #135589;
 }
 
 form legend {
@@ -160,7 +162,7 @@ form legend {
 
 .fieldset-wrapper {
   margin: auto;
-  border: 1px solid black;
+  border: 1px solid #135589;
   padding: 10px 0;
 }
 
@@ -180,6 +182,7 @@ fieldset {
 
 .fieldset-wrapper input {
   text-align: center;
+  background-color: #EDFAFD;
 }
 
 .form-buttons{
@@ -187,11 +190,12 @@ fieldset {
   width: 200px;
   height: 30px;
   margin-left: 250px;
+  background-color: #EDFAFD;
 
 }
 
 form input[type='submit']{
-  color: blue;
+  color: #135589;
 }
 
 form input[type='reset'] {
@@ -200,8 +204,8 @@ form input[type='reset'] {
 
 
 /* ========== CLEARFIX ========== */
-.clerafix:after {
+/* .clerafix:after {
 	content: "";
 	display: table;
 	clear: both;
-}
+} */

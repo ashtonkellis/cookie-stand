@@ -1,12 +1,10 @@
 # wednesday's lab
 
 ## index.html
-1. add clear form button
+
 ## sales.html
 
 ## app.js
-1. add clear form button
-1. add event listener to clear form button to actually clear the form
 1. update submit event listener to clear form
 
 ## style.css
