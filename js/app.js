@@ -6,7 +6,9 @@ var stores = [];
 
 var salesTableHead = document.getElementById('sales-table-head');
 var salesTableBody = document.getElementById('sales-table-body');
-var salesTableFoot = document.getElementById('sales-table-foot');
+
+// uncomment for stretch goal footer
+// var salesTableFoot = document.getElementById('sales-table-foot');
 
 function randIntBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -119,8 +121,10 @@ Store.renderSalesTable = function () {
   }
 };
 
-var firstAndPike = new Store('1st and Pike', 'firstAndPike', 23, 65, 6.3);
-var seaTac = new Store('SeaTac Airport', 'seaTac', 3, 24, 1.2);
-var seattleCenter = new Store('Seattle Center', 'seattleCenter', 11, 38, 3.7);
-var capitolHill = new Store('Capitol Hill', 'capitolHill', 20, 38, 2.3);
-var alki = new Store('Alki', 'alki', 2, 16, 4.6);
+new Store('1st and Pike', 'firstAndPike', 23, 65, 6.3);
+new Store('SeaTac Airport', 'seaTac', 3, 24, 1.2);
+new Store('Seattle Center', 'seattleCenter', 11, 38, 3.7);
+new Store('Capitol Hill', 'capitolHill', 20, 38, 2.3);
+new Store('Alki', 'alki', 2, 16, 4.6);
+
+Store.renderSalesTable();

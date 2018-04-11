@@ -1,27 +1,11 @@
-# technical requirements for tuesday's lab
-## app.js
-3. function to render table header row
-4. function to render table data rows
-5. function to render table footer row
-
-## sales.html
-1. add a table that looks like this: 
-
-|                | 6:00am | 7:00am | 8:00am | 9:00am | 10:00am | 11:00am | 12:00pm | 1:00pm | 2:00pm | 3:00pm | 4:00pm | 5:00pm | 6:00pm | 7:00pm | Daily Location Total
-|------------------------|-------|--------|--------|--------|--------|---------|---------|---------|--------|--------|--------|--------|--------|--------|--------|
-| 1st and Pike      |       |        |        |        |        |         |         |         |        |        |        |        |        |        |
-| SeaTac Airport           |       |        |        |        |        |         |         |         |        |        |        |        |        |        |
-| Seattle Center |       |        |        |        |        |         |         |         |        |        |        |        |        |        |
-| Capitol Hill       |       |        |        |        |        |         |         |         |        |        |        |        |        |        |
-| Alki        |       |        |        |        |        |         |         |         |        |        |        |        |        |        |
-| Totals                 |       |        |        |        |        |         |         |         |        |        |        |        |        |        |
-
 ## index.html
 1. add information about each store
 
 ## style.css
 1. apply a color pallet that looks nice from one of the websites linked today in class
 2. fix layout issues with the stores at the bottom of the page
+3. link to css reset from both pages
+4. make the table look pretty for pat
 
 # prep for tomorrow
 1. journal
