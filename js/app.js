@@ -3,7 +3,7 @@
 var storeHours = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
 var totalCookiesEachHour = [];
 var totalCookiesAllStores = 0;
-var staffEachHour = [];
+var totalStaffEachHour = [];
 var totalStaffHours = 0;
 
 var stores = [];
@@ -47,13 +47,20 @@ var Store = function(storeName, storeId, hourlyCustomersMin, hourlyCustomersMax,
   this.cookiesEachHour = [];
   this.totalCookies = 0;
   this.totalStaffHours = 0;
+  // populate arrays and update property values
   this.estimateCustomers();
   this.estimateCookies();
   this.estimateTotalCookies();
   this.estimateStaff();
+  // update global arrays and variables
   this.updateTotalCookies();
+  this.updateTotalStaff();
+  // render tables
   this.renderSalesTableData();
   Store.renderSalesTableFooter();
+  this.renderStaffTableData();
+  Store.renderStaffTableFooter();
+  // push store to stores array
   stores.push(this);
 };
 
@@ -114,23 +121,50 @@ Store.prototype.updateTotalCookies = function () {
   }
 };
 
+// *********** YOU ARE HERE ***************
+// update the totalCookiesEachHour array with the values from the cookiesEachHour array, and updates totalCookiesAllStores
+Store.prototype.updateTotalStaff = function () {
+  for (var i in this.staffEachHour) {
+    // populates the array if it is empty
+    if (isNaN(totalStaffEachHour[i])) {
+      totalStaffEachHour[i] = this.staffEachHour[i];
+    } else { // increments the array if it already has values
+      totalStaffEachHour[i] += this.staffEachHour[i];
+    }
+    totalStaffHours += this.staffEachHour[i];
+  }
+};
+
+// renders the sales table data row
+Store.prototype.renderStaffTableData = function () {
+  // create a table row
+  var trEL = document.createElement('tr');
+  // create first td element (store name) and create/append to tr
+  trEL.appendChild(addTD(this.storeName));
+  // loop through cookiesEachHour array and create/append a td to tr
+  for (var i in this.staffEachHour) {
+    var staff = this.staffEachHour[i];
+    trEL.appendChild(addTD(staff));
+  }
+  // create last td element (total staff hours) and create/append a td to tr
+  trEL.appendChild(addTD(this.totalStaffHours));
+  // append table row to table
+  staffingTableBody.appendChild(trEL);
+};
+
 // renders the sales table data row
 Store.prototype.renderSalesTableData = function () {
   // create a table row
   var trEL = document.createElement('tr');
-
   // create first td element (store name) and create/append to tr
   trEL.appendChild(addTD(this.storeName));
-
   // loop through cookiesEachHour array and create/append a td to tr
   for (var i in this.cookiesEachHour) {
     var sales = this.cookiesEachHour[i];
     trEL.appendChild(addTD(sales));
   }
-
   // create last td element (totalCookies) and create/append a td to tr
   trEL.appendChild(addTD(this.totalCookies));
-
   // append table row to table
   salesTableBody.appendChild(trEL);
 };
@@ -173,6 +207,11 @@ Store.renderTableFooter = function (tableFootElement, dataArr, grandTotal) {
 // render sales table totals row (bottom row)
 Store.renderSalesTableFooter = function () {
   Store.renderTableFooter(salesTableFoot, totalCookiesEachHour, totalCookiesAllStores);
+};
+
+// render sales table totals row (bottom row)
+Store.renderStaffTableFooter = function () {
+  Store.renderTableFooter(staffingTableFoot, totalStaffEachHour, totalStaffHours);
 };
 
 // event handler for form submission: creates a new store and resets the form
