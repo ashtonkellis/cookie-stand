@@ -219,7 +219,7 @@ function handleFormSubmit(e) {
   e.preventDefault();
   new Store(
     e.target.storeName.value,
-    e.target.storeId.value,
+    '',
     e.target.minCustomers.value,
     e.target.maxCustomers.value,
     e.target.avgCookies.value

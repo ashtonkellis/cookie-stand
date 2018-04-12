@@ -1,11 +1,10 @@
 # ===== HOUSEKEEPING =====
-1. git enable tab complete for in terminal
 2. remove store id from form in sales.html
 3. add minimums to input form so that you can't put in negative numbers
 4. check that the numbers are actualy numbers (parse int and parse float)
 5. add title above the staffing table in sales.html
-6. remove dead code from styles.css
 7. comment on someone elses post
+1. git enable tab complete for in terminal
  
 # ===== TODAY'S LAB =====
 1. tidy up HTML with new stuff that we learned about layout today
