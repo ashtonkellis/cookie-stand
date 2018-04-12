@@ -1,8 +1,4 @@
 # ===== HOUSEKEEPING =====
-4. check that the numbers are actualy numbers (parse int and parse float)
-5. add title above the staffing table in sales.html
-7. comment on someone elses post
-1. git enable tab complete for in terminal
  
 # ===== TODAY'S LAB =====
 1. tidy up HTML with new stuff that we learned about layout today
