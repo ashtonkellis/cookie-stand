@@ -5,18 +5,10 @@
 ## sales.html
 
 ## app.js
-1. update submit event listener to clear form
 
 ## style.css
 
-
-
-# prep for tomorrow
-5. comment on someone else's reading assignment
-1. quiz
-2. journal
-3. reading
-4. push and submit lab
+# Canvas Stuff
 
 # stretch goals for tuesday's lab
 1. add total for each hour to sales table
