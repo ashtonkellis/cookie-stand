@@ -66,7 +66,8 @@ var Store = function(storeName, storeId, hourlyCustomersMin, hourlyCustomersMax,
 
 // returns a random number of customers between the hourCustomersMin and hourCustomersMax property
 Store.prototype.randCustomerQuantity = function() {
-  return randIntBetween(this.hourlyCustomersMin, this.hourlyCustomersMax);
+  var customers = randIntBetween(this.hourlyCustomersMin, this.hourlyCustomersMax);
+  return Math.max(customers, 0);
 };
 
 // fills the customersEachHour array with estimates of customers for each hour
@@ -217,14 +218,18 @@ Store.renderStaffTableFooter = function () {
 // event handler for form submission: creates a new store and resets the form
 function handleFormSubmit(e) {
   e.preventDefault();
-  new Store(
-    e.target.storeName.value,
-    '',
-    e.target.minCustomers.value,
-    e.target.maxCustomers.value,
-    e.target.avgCookies.value
-  );
-  e.target.reset();
+  if (e.target.minCustomers.value > e.target.maxCustomers.value) {
+    alert('The max customers must be greater than or equal to the min customers');
+  } else {
+    new Store(
+      e.target.storeName.value,
+      '',
+      e.target.minCustomers.value,
+      e.target.maxCustomers.value,
+      e.target.avgCookies.value
+    );
+    e.target.reset();
+  }
 }
 
 // adds an event listener to the new-store form
