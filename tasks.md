@@ -1,6 +1,4 @@
 # ===== HOUSEKEEPING =====
-3. fix calculate customers function to return 0 as a minimum
-3. alert the user if max is less than min
 4. check that the numbers are actualy numbers (parse int and parse float)
 5. add title above the staffing table in sales.html
 7. comment on someone elses post

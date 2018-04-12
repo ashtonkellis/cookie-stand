@@ -122,7 +122,6 @@ Store.prototype.updateTotalCookies = function () {
   }
 };
 
-// *********** YOU ARE HERE ***************
 // update the totalCookiesEachHour array with the values from the cookiesEachHour array, and updates totalCookiesAllStores
 Store.prototype.updateTotalStaff = function () {
   for (var i in this.staffEachHour) {
@@ -219,14 +218,14 @@ Store.renderStaffTableFooter = function () {
 function handleFormSubmit(e) {
   e.preventDefault();
   if (e.target.minCustomers.value > e.target.maxCustomers.value) {
-    alert('The max customers must be greater than or equal to the min customers');
+    alert('Oops! The max customers must be greater than or equal to the min customers.');
   } else {
     new Store(
       e.target.storeName.value,
       '',
-      e.target.minCustomers.value,
-      e.target.maxCustomers.value,
-      e.target.avgCookies.value
+      parseInt(e.target.minCustomers.value),
+      parseInt(e.target.maxCustomers.value),
+      parseFloat(e.target.avgCookies.value)
     );
     e.target.reset();
   }
