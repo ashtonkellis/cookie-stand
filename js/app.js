@@ -12,6 +12,10 @@ var salesTableHead = document.getElementById('sales-table-head');
 var salesTableBody = document.getElementById('sales-table-body');
 var salesTableFoot = document.getElementById('sales-table-foot');
 
+var staffingTableHead = document.getElementById('staffing-table-head');
+var staffingTableBody = document.getElementById('staffing-table-body');
+var staffingTableFoot = document.getElementById('staffing-table-foot');
+
 // accepts two integers (min and max) and returns a random value between them (inclusive)
 function randIntBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -145,23 +149,28 @@ Store.renderTableHeader = function(theadElement) {
 };
 
 // render table totals row (bottom row)
-Store.renderSalesTableFooter = function () {
+Store.renderTableFooter = function (tableFootElement, dataArr, grandTotal) {
   //clear previous table footer
-  while (salesTableFoot.hasChildNodes()) {
-    salesTableFoot.removeChild(salesTableFoot.lastChild);
+  while (tableFootElement.hasChildNodes()) {
+    tableFootElement.removeChild(tableFootElement.lastChild);
   }
   // create table row
   var trEL = document.createElement('tr');
   // append first cell
   trEL.appendChild(addTH('Total:'));
   // loop through all elements in totalCookiesEachHour array and append a new td to the tr
-  for (var i in totalCookiesEachHour) {
-    trEL.appendChild(addTH(totalCookiesEachHour[i]));
+  for (var i in dataArr) {
+    trEL.appendChild(addTH(dataArr[i]));
   }
   // append last cell with the total cookies sold for all stores
-  trEL.appendChild(addTH(totalCookiesAllStores));
+  trEL.appendChild(addTH(grandTotal));
   // append tr to the sales table
-  salesTableFoot.appendChild(trEL);
+  tableFootElement.appendChild(trEL);
+};
+
+// render table totals row (bottom row)
+Store.renderSalesTableFooter = function () {
+  Store.renderTableFooter(salesTableFoot, totalCookiesEachHour, totalCookiesAllStores);
 };
 
 // event handler for form submission: creates a new store and resets the form
