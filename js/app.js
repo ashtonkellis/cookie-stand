@@ -46,6 +46,7 @@ var Store = function(storeName, storeId, hourlyCustomersMin, hourlyCustomersMax,
   this.staffEachHour = [];
   this.cookiesEachHour = [];
   this.totalCookies = 0;
+  this.totalStaffHours = 0;
   this.estimateCustomers();
   this.estimateCookies();
   this.estimateTotalCookies();
@@ -95,6 +96,7 @@ Store.prototype.estimateStaff = function () {
     var staff = Math.ceil(customers / 20);
     staff = Math.max(staff, 2);
     this.staffEachHour.push(staff);
+    this.totalStaffHours += staff;
     totalStaffHours += staff;
   }
 };
@@ -133,7 +135,7 @@ Store.prototype.renderSalesTableData = function () {
   salesTableBody.appendChild(trEL);
 };
 
-Store.renderTableHeader = function(theadElement) {
+Store.renderTableHeader = function(theadElement, totalColText) {
   // create table row
   var trEL = document.createElement('tr');
   // create first th element (blank cell) and append to tr element
@@ -143,7 +145,7 @@ Store.renderTableHeader = function(theadElement) {
     trEL.appendChild(addTH(storeHours[i]));
   }
   // create last th element (total's column) and append to tr
-  trEL.appendChild(addTH('Daily Location Total'));
+  trEL.appendChild(addTH(totalColText));
   // append table row to table
   theadElement.appendChild(trEL);
 };
@@ -168,7 +170,7 @@ Store.renderTableFooter = function (tableFootElement, dataArr, grandTotal) {
   tableFootElement.appendChild(trEL);
 };
 
-// render table totals row (bottom row)
+// render sales table totals row (bottom row)
 Store.renderSalesTableFooter = function () {
   Store.renderTableFooter(salesTableFoot, totalCookiesEachHour, totalCookiesAllStores);
 };
@@ -191,7 +193,8 @@ var newStoreForm = document.getElementById('new-store-form');
 newStoreForm.addEventListener('submit', handleFormSubmit);
 
 // render sales table header
-Store.renderTableHeader(salesTableHead);
+Store.renderTableHeader(salesTableHead, 'Daily Location Total');
+Store.renderTableHeader(staffingTableHead,'Staff-Hours');
 
 // create known store objects
 new Store('1st and Pike', 'firstAndPike', 23, 65, 6.3);
