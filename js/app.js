@@ -40,17 +40,13 @@ var Store = function(storeName, storeId, hourlyCustomersMin, hourlyCustomersMax,
   this.customersEachHour = [];
   this.cookiesEachHour = [];
   this.totalCookies = 0;
-  this.estimateAll();
+  this.estimateCustomers();
+  this.estimateCookies();
+  this.estimateTotalCookies();
   this.updateTotalCookies();
+  this.renderSalesTableData();
+  Store.renderSalesTableFooter();
   stores.push(this);
-};
-
-// update the totalCookiesEachHour array with the values from the cookiesEachHour array, and updates totalCookiesAllStores
-Store.prototype.updateTotalCookies = function () {
-  for (var i in this.cookiesEachHour) {
-    totalCookiesEachHour[i] = this.cookiesEachHour[i];
-    totalCookiesAllStores += this.cookiesEachHour[i];
-  }
 };
 
 // returns a random number of customers between the hourCustomersMin and hourCustomersMax property
@@ -58,16 +54,15 @@ Store.prototype.randCustomerQuantity = function() {
   return randIntBetween(this.hourlyCustomersMin, this.hourlyCustomersMax);
 };
 
-// fills the customersEachHour array with estimates of customers for each hour, then returns this array
+// fills the customersEachHour array with estimates of customers for each hour
 Store.prototype.estimateCustomers = function() {
   for (var i = 0; i < storeHours.length; i++) {
     var customers = this.randCustomerQuantity();
     this.customersEachHour.push(customers);
   }
-  return this.customersEachHour;
 };
 
-// fills the cookies EachHour array with estimates of cookies sold for each hour, thenn returns this array
+// fills the cookies EachHour array with estimates of cookies sold for each hour
 Store.prototype.estimateCookies = function() {
   for (var i = 0; i < storeHours.length; i++) {
     var cookies = this.customersEachHour[i] * this.avgCookiesPerCustomer
@@ -75,23 +70,27 @@ Store.prototype.estimateCookies = function() {
     cookies = Math.round(cookies);
     this.cookiesEachHour.push(cookies);
   }
-  return this.cookiesEachHour;
 };
 
-// updates the totalCookies property to get the value of the sum of the cookiesEachHour array, then returns this value
+// updates the totalCookies property to get the value of the sum of the cookiesEachHour array
 Store.prototype.estimateTotalCookies = function() {
   this.totalCookies = 0;
   for (var i = 0; i < this.cookiesEachHour.length; i++) {
     this.totalCookies += this.cookiesEachHour[i];
   }
-  return this.totalCookies;
 };
 
-// estimates all calculated properties (customersEachHour, cookiesEachHour and totalCookies)
-Store.prototype.estimateAll = function() {
-  this.estimateCustomers();
-  this.estimateCookies();
-  this.estimateTotalCookies();
+// update the totalCookiesEachHour array with the values from the cookiesEachHour array, and updates totalCookiesAllStores
+Store.prototype.updateTotalCookies = function () {
+  for (var i in this.cookiesEachHour) {
+    // populates the array if it is empty
+    if (isNaN(totalCookiesEachHour[i])) {
+      totalCookiesEachHour[i] = this.cookiesEachHour[i];
+    } else { // increments the array if it already has values
+      totalCookiesEachHour[i] += this.cookiesEachHour[i];
+    }
+    totalCookiesAllStores += this.cookiesEachHour[i];
+  }
 };
 
 // renders the sales table data row
@@ -135,16 +134,12 @@ Store.renderSalesTableHeader = function () {
   salesTableHead.appendChild(trEL);
 };
 
-// renders the entire sales table (header and data rows) for all of the stores
-Store.renderSalesTable = function () {
-  this.renderSalesTableHeader();
-  for (var i in stores) {
-    stores[i].renderSalesTableData();
-  }
-};
-
 // render table totals row (bottom row)
 Store.renderSalesTableFooter = function () {
+  //clear previous table footer
+  while (salesTableFoot.hasChildNodes()) {
+    salesTableFoot.removeChild(salesTableFoot.lastChild);
+  }
   // create table row
   var trEL = document.createElement('tr');
 
@@ -166,14 +161,13 @@ Store.renderSalesTableFooter = function () {
 // event handler for form submission: creates a new store and resets the form
 function handleFormSubmit(e) {
   e.preventDefault();
-  var newStore = new Store(
+  new Store(
     e.target.storeName.value,
     e.target.storeId.value,
     e.target.minCustomers.value,
     e.target.maxCustomers.value,
     e.target.avgCookies.value
   );
-  newStore.renderSalesTableData();
   e.target.reset();
 }
 
@@ -181,12 +175,12 @@ function handleFormSubmit(e) {
 var newStoreForm = document.getElementById('new-store-form');
 newStoreForm.addEventListener('submit', handleFormSubmit);
 
+// render sales table header
+Store.renderSalesTableHeader();
+
 // create known store objects
 new Store('1st and Pike', 'firstAndPike', 23, 65, 6.3);
 new Store('SeaTac Airport', 'seaTac', 3, 24, 1.2);
 new Store('Seattle Center', 'seattleCenter', 11, 38, 3.7);
 new Store('Capitol Hill', 'capitolHill', 20, 38, 2.3);
 new Store('Alki', 'alki', 2, 16, 4.6);
-
-//render sales table
-Store.renderSalesTable();
