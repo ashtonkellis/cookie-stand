@@ -38,11 +38,13 @@ var Store = function(storeName, storeId, hourlyCustomersMin, hourlyCustomersMax,
   this.hourlyCustomersMax = hourlyCustomersMax;
   this.avgCookiesPerCustomer = avgCookiesPerCustomer;
   this.customersEachHour = [];
+  this.staffEachHour = [];
   this.cookiesEachHour = [];
   this.totalCookies = 0;
   this.estimateCustomers();
   this.estimateCookies();
   this.estimateTotalCookies();
+  this.estimateStaff();
   this.updateTotalCookies();
   this.renderSalesTableData();
   Store.renderSalesTableFooter();
@@ -77,6 +79,16 @@ Store.prototype.estimateTotalCookies = function() {
   this.totalCookies = 0;
   for (var i = 0; i < this.cookiesEachHour.length; i++) {
     this.totalCookies += this.cookiesEachHour[i];
+  }
+};
+
+// populates the staffEachHour array based on the customersEachHour array, and assuming that single Salmon Cookie Tosser can serve 20 customers per hour, and that each location should have a minimum of two Salmon Cookie Tossers on shift at all times,
+Store.prototype.estimateStaff = function () {
+  for (var i in this.customersEachHour) {
+    var customers = this.customersEachHour[i];
+    var staff = Math.ceil(customers / 20);
+    staff = Math.max(staff, 2);
+    this.staffEachHour.push(staff);
   }
 };
 
@@ -118,18 +130,14 @@ Store.prototype.renderSalesTableData = function () {
 Store.renderSalesTableHeader = function () {
   // create table row
   var trEL = document.createElement('tr');
-
   // create first th element (blank cell) and append to tr element
   trEL.appendChild(addTH(''));
-
   // loop through all store locations and append store names to tr
   for (var i in storeHours) {
     trEL.appendChild(addTH(storeHours[i]));
   }
-
   // create last th element (total's column) and append to tr
   trEL.appendChild(addTH('Daily Location Total'));
-
   // append table row to table
   salesTableHead.appendChild(trEL);
 };
@@ -142,18 +150,14 @@ Store.renderSalesTableFooter = function () {
   }
   // create table row
   var trEL = document.createElement('tr');
-
   // append first cell
   trEL.appendChild(addTH('Total:'));
-
   // loop through all elements in totalCookiesEachHour array and append a new td to the tr
   for (var i in totalCookiesEachHour) {
     trEL.appendChild(addTH(totalCookiesEachHour[i]));
   }
-
   // append last cell with the total cookies sold for all stores
   trEL.appendChild(addTH(totalCookiesAllStores));
-
   // append tr to the sales table
   salesTableFoot.appendChild(trEL);
 };

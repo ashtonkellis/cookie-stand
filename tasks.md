@@ -11,7 +11,6 @@
 # Canvas Stuff
 
 # stretch goals for tuesday's lab
-1. add total for each hour to sales table
 
 ## sales.html
 1. add a table to store the staffing requirements
