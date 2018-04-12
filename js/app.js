@@ -4,6 +4,7 @@ var storeHours = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00
 var totalCookiesEachHour = [];
 var totalCookiesAllStores = 0;
 var staffEachHour = [];
+var totalStaffHours = 0;
 
 var stores = [];
 
@@ -82,13 +83,15 @@ Store.prototype.estimateTotalCookies = function() {
   }
 };
 
-// populates the staffEachHour array based on the customersEachHour array, and assuming that single Salmon Cookie Tosser can serve 20 customers per hour, and that each location should have a minimum of two Salmon Cookie Tossers on shift at all times,
+// populates the staffEachHour array based on the customersEachHour array
+// assumptions: 1 staff can serve 20 customers per hour && minimum of 2 staff per hour.
 Store.prototype.estimateStaff = function () {
   for (var i in this.customersEachHour) {
     var customers = this.customersEachHour[i];
     var staff = Math.ceil(customers / 20);
     staff = Math.max(staff, 2);
     this.staffEachHour.push(staff);
+    totalStaffHours += staff;
   }
 };
 
@@ -126,8 +129,7 @@ Store.prototype.renderSalesTableData = function () {
   salesTableBody.appendChild(trEL);
 };
 
-// renders the sales table header
-Store.renderSalesTableHeader = function () {
+Store.renderTableHeader = function(theadElement) {
   // create table row
   var trEL = document.createElement('tr');
   // create first th element (blank cell) and append to tr element
@@ -139,7 +141,7 @@ Store.renderSalesTableHeader = function () {
   // create last th element (total's column) and append to tr
   trEL.appendChild(addTH('Daily Location Total'));
   // append table row to table
-  salesTableHead.appendChild(trEL);
+  theadElement.appendChild(trEL);
 };
 
 // render table totals row (bottom row)
@@ -180,7 +182,7 @@ var newStoreForm = document.getElementById('new-store-form');
 newStoreForm.addEventListener('submit', handleFormSubmit);
 
 // render sales table header
-Store.renderSalesTableHeader();
+Store.renderTableHeader(salesTableHead);
 
 // create known store objects
 new Store('1st and Pike', 'firstAndPike', 23, 65, 6.3);
