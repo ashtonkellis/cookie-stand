@@ -82,13 +82,28 @@ h3 {
 }
 
 .cookie {
-  display: inline-block;
   border: 2px solid black;
+  padding: 15px;
+}
+
+.cookie img {
+  width: 225px;
+  height: 225px;
+  margin: auto;
 }
 
 .cookie h4 {
   text-decoration: underline;
-  margin: 4px 0;
+  margin: 10px 0;
+}
+
+.cookie button {
+  text-align: center;
+  margin-top: 20px;
+  width: 100%;
+  background-color: #3DDAD7;
+  border: 2px solid #EDFAFD;
+  font-size: 10px;
 }
 
 /* 
