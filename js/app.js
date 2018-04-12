@@ -1,13 +1,17 @@
 'use strict';
 
 var storeHours = ['6:00am','7:00am','8:00am','9:00am','10:00am','11:00am','12:00am','1:00pm','2:00pm','3:00pm','4:00pm','5:00pm','6:00pm','7:00pm'];
+var totalCookiesEachHour = [];
+var totalCookiesAllStores = 0;
+var staffEachHour = [];
 
 var stores = [];
 
 var salesTableHead = document.getElementById('sales-table-head');
 var salesTableBody = document.getElementById('sales-table-body');
 
-// uncomment for stretch goal footer
+
+// ********** UNCOMMENT FOR STRETCH GOAL **********
 // var salesTableFoot = document.getElementById('sales-table-foot');
 
 // accepts two integers (min and max) and returns a random value between them (inclusive)
@@ -40,7 +44,16 @@ var Store = function(storeName, storeId, hourlyCustomersMin, hourlyCustomersMax,
   this.cookiesEachHour = [];
   this.totalCookies = 0;
   this.estimateAll();
+  this.updateTotalCookies();
   stores.push(this);
+};
+
+// update the totalCookiesEachHour array with the values from the cookiesEachHour array, and updates totalCookiesAllStores
+Store.prototype.updateTotalCookies = function () {
+  for (var i in this.cookiesEachHour) {
+    totalCookiesEachHour[i] = this.cookiesEachHour[i];
+    totalCookiesAllStores += this.cookiesEachHour[i];
+  }
 };
 
 // returns a random number of customers between the hourCustomersMin and hourCustomersMax property
@@ -131,6 +144,11 @@ Store.renderSalesTable = function () {
   for (var i in stores) {
     stores[i].renderSalesTableData();
   }
+};
+
+// render table totals row (bottom row)
+Store.renderSalesTableFooter = function () {
+  
 };
 
 // event handler for form submission: creates a new store and resets the form
