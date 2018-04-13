@@ -9,7 +9,11 @@
 
 * {
   box-sizing: border-box;
-  border: 1px red solid;
+}
+
+p,
+h4 {
+  color: #EDFAFD;
 }
 
 /* HEADER ELEMENTS*/
@@ -132,10 +136,35 @@ h3 {
   justify-content: space-between;
 }
 
-body > img {
-  width: 100%;
-  margin: 10px 0;
+/* ===== EVENTS ELEMENTS */
+.events {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+  padding: 10px;
 }
+
+.events img {
+  width: 500px;
+  height: 400px;
+}
+
+.events ul {
+  width: 40%;
+  border: 2px solid black;
+  padding: 5px;
+  margin-left: 10px;
+  font-size: 1.25em;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.events ul li{
+  margin-top: 5px;
+  text-decoration: solid;
+  text-align: left;
+}
+
 /* ===== FOOTER ELEMENTS */
 footer {
   padding: 10px;

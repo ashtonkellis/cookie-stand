@@ -1,12 +1,6 @@
 # ===== HOUSEKEEPING =====
  
 # ===== TODAY'S LAB =====
-1. include all of the new images on the index.html website
-2. add addresses, contact info to locatiions on index
-3. add mockup links to the following pages:
-  1. about us
-  2. merchandise
-  3. links to salmon events like the salmon days in issaquah
 
 # ===== CANVAS STUFF =====
 1. push and submit today's lab
