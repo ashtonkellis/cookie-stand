@@ -68,8 +68,6 @@ section {
 
 h3 {
   text-align: center;
-  margin: 15px;
-  padding-top: 15px;
   font-size: 1.5em;
 }
 
@@ -113,7 +111,7 @@ h3 {
 
 .swag {
   background-color: #2A93D5;
-  border: 2px solid black ;
+  border: 2px solid black;
   margin: 4px;
   padding: 15px;
   display: flex;
@@ -134,13 +132,28 @@ h3 {
   justify-content: space-between;
 }
 
-.stores {
-  
+footer {
+  padding: 10px;
 }
 
-.info button {
-  /* align-self: flex-end; */
+.stores {
+  display: flex;
+  justify-content: space-evenly;
 }
+
+.stores li {
+  background-color: #2A93D5;
+  border: 2px solid black;
+  margin: 5px;
+  padding: 5px;
+}
+
+.stores li :first-child {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 2px;
+}
+
 /* ========== FORMATTING FOR SALES PAGE ========== */
 
 /* FORMATTING FOR TABLES */
