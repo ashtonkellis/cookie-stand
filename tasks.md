@@ -1,8 +1,6 @@
 # ===== HOUSEKEEPING =====
  
 # ===== TODAY'S LAB =====
-1. tidy up HTML with new stuff that we learned about layout today
-0. refactor the fish animations, and add more for new fish
 1. include all of the new images on the index.html website
 2. add addresses, contact info to locatiions on index
 3. add mockup links to the following pages:
