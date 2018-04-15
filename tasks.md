@@ -3,9 +3,6 @@
 # ===== TODAY'S LAB =====
 
 # ===== CANVAS STUFF =====
-1. push and submit today's lab
-2. journal
-3. reading, js debugging  
 
 # ===== STRETCH GOALS =====
 1. add funcitonality to the input form to update the data for a location already in the table
